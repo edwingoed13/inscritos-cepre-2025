@@ -4,10 +4,13 @@ from bs4 import BeautifulSoup
 from collections import defaultdict
 import os
 from dotenv import load_dotenv
-load_dotenv()  # Carga las variables de entorno desde el archivo .env
+
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
 
 app = Flask(__name__, template_folder='templates')
 
+# Diccionarios para mapear IDs a nombres
 nombres_sedes = {1: 'Virtual', 2: 'Juliaca', 3: 'Puno', 4: 'Juli-Chucuito', 5: 'Ayaviri', 6: 'Azángaro', 7: 'Huancané-Moho', 8: 'Ilave'}
 nombres_areas = {1: 'Biomédicas', 2: 'Ingenierías', 3: 'Sociales'}
 nombres_turnos = {1: 'Mañana', 2: 'Tarde', 3: 'Noche'}
@@ -73,7 +76,6 @@ def filtrar_datos_por_sede(datos, sede_filtro):
     if not sede_filtro:
         return datos
     return [registro for registro in datos if str(registro.get('sedes_id')) == sede_filtro]
-
 
 @app.route('/')
 def index():
