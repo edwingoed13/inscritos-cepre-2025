@@ -1,0 +1,115 @@
+body {
+    margin: 20px;
+}
+
+/* Estilos generales para el contenedor */
+.container {
+    max-width: 1200px; /* Limita el ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor en la página */
+    padding: 20px; /* Espacio interno */
+}
+
+/* Estilos para el contenedor de los gráficos */
+.chart-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre los gráficos */
+    flex-wrap: wrap; /* Permite que los gráficos se envuelvan en pantallas pequeñas */
+    gap: 20px; /* Espacio entre los gráficos */
+    margin-top: 20px; /* Espacio superior para separar de otras secciones */
+}
+
+/* Estilos para cada gráfico */
+.chart-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 45%; /* Flex-grow, flex-shrink, flex-basis */
+    min-width: 300px; /* Ancho mínimo para mantener la legibilidad */
+    text-align: center;
+}
+
+/* Establece un tamaño fijo para los canvas */
+.chart-item canvas {
+    width: 100% !important; /* Ocupa el 100% del ancho del contenedor */
+    height: 300px !important; /* Altura fija para ambos gráficos */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .chart-item {
+        flex: 1 1 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+        margin: 10px 0; /* Menos margen en pantallas pequeñas */
+    }
+}
+
+/* Estilos generales para las tablas */
+table {
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    border-collapse: collapse; /* Elimina el espacio entre celdas */
+    margin: 20px 0; /* Margen superior e inferior */
+    font-family: Arial, sans-serif; /* Fuente más moderna */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 8px; /* Esquinas redondeadas */
+    overflow: hidden; /* Oculta el contenido que sobresale */
+    background-color: #ffffff; /* Fondo blanco para la tabla */
+}
+
+/* Estilos para las celdas de la cabecera */
+table th {
+    background-color: #3498db; /* Color de fondo azul vibrante */
+    color: #032f61; /* Texto blanco */
+    padding: 12px 15px; /* Espaciado interno */
+    text-align: left; /* Alineación del texto */
+    font-weight: bold; /* Texto en negrita */
+    text-transform: uppercase; /* Convertir texto a mayúsculas */
+    font-size: 14px; /* Tamaño de fuente ligeramente más grande */
+    border-bottom: 2px solid #2980b9; /* Borde inferior más grueso */
+}
+
+/* Estilos para las celdas del cuerpo */
+table td {
+    padding: 12px 15px; /* Espaciado interno */
+    border-bottom: 1px solid #e0e0e0; /* Borde inferior más suave */
+    text-align: left; /* Alineación del texto */
+    color: #34495e; /* Color de texto oscuro pero suave */
+    font-size: 14px; /* Tamaño de fuente consistente */
+}
+
+/* Estilos para las filas impares */
+table tr:nth-child(odd) {
+    background-color: #f8f9fa; /* Fondo gris muy claro */
+}
+
+/* Estilos para las filas pares */
+table tr:nth-child(even) {
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+/* Estilos para la última fila (sin borde inferior) */
+table tr:last-child td {
+    border-bottom: none; /* Elimina el borde inferior de la última fila */
+}
+
+/* Efecto hover para las filas */
+table tr:hover {
+    background-color: #e9ecef; /* Cambia el color de fondo al pasar el mouse */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Estilos para la primera columna (opcional) */
+table td:first-child {
+    font-weight: bold; /* Texto en negrita */
+    color: #2c3e50; /* Color de texto oscuro */
+}
+
+/* Estilos para la última columna (opcional) */
+table td:last-child {
+    text-align: right; /* Alineación del texto a la derecha */
+    color: #3498db; /* Color azul para resaltar */
+}
+
+.card {
+    margin-bottom: 20px;
+}
