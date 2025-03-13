@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request, render_template
 import requests
 from bs4 import BeautifulSoup
 from collections import defaultdict
+import os
+from dotenv import load_dotenv
+load_dotenv()  # Carga las variables de entorno desde el archivo .env
 
 app = Flask(__name__, template_folder='templates')
 
@@ -71,14 +74,15 @@ def filtrar_datos_por_sede(datos, sede_filtro):
         return datos
     return [registro for registro in datos if str(registro.get('sedes_id')) == sede_filtro]
 
+
 @app.route('/')
 def index():
-    return render_template('index2.html')
+    return render_template('index.html')
 
 @app.route('/obtener_datos', methods=['GET'])
 def obtener_datos_endpoint():
-    email = "esflores@cepreuna.edu.pe"
-    password = "46386459"
+    email = os.getenv('CEPREUNA_EMAIL')  # Obtiene el email desde las variables de entorno
+    password = os.getenv('CEPREUNA_PASSWORD')  # Obtiene la contraseña desde las variables de entorno
     sede_filtro = request.args.get('sede', None)
 
     with requests.Session() as session:
