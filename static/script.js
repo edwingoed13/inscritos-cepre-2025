@@ -14,7 +14,7 @@ function obtenerDatos() {
                 return;
             }
 
-            const { total_inscritos, areas, turnos, fecha_actualizacion } = data;
+            const { total_inscritos, areas, turnos, vacantes_restantes, fecha_actualizacion } = data;
 
             // Crear el contenido HTML
             let contentHTML = `<div class="card"><div class="card-body"><h2>Total de inscritos: ${total_inscritos}</h2></div></div>`;
@@ -37,16 +37,20 @@ function obtenerDatos() {
 
             tableHTML += '</tbody></table></div></div>';
 
-            // Tabla de turnos
-            let turnosHTML = '<div class="card"><div class="card-body"><h3>Turnos</h3><table class="table table-bordered"><thead><tr><th>Área</th><th>Turno</th><th>Total</th></tr></thead><tbody>';
+            // Tabla de turnos con vacantes restantes (solo si se selecciona una sede específica)
+            let turnosHTML = '';
+            if (sede) {
+                turnosHTML = '<div class="card"><div class="card-body"><h3>Turnos</h3><table class="table table-bordered"><thead><tr><th>Área</th><th>Turno</th><th>Total Inscritos</th><th>Vacantes Restantes</th></tr></thead><tbody>';
 
-            for (const [area, turnosArea] of Object.entries(turnos)) {
-                for (const [turno, total] of Object.entries(turnosArea)) {
-                    turnosHTML += `<tr><td>${area}</td><td>${turno}</td><td>${total}</td></tr>`;
+                for (const [area, turnosArea] of Object.entries(turnos)) {
+                    for (const [turno, total] of Object.entries(turnosArea)) {
+                        const vacantes = vacantes_restantes[area] ? vacantes_restantes[area][turno] || 0 : 0;
+                        turnosHTML += `<tr><td>${area}</td><td>${turno}</td><td>${total}</td><td>${vacantes}</td></tr>`;
+                    }
                 }
-            }
 
-            turnosHTML += '</tbody></table></div></div>';
+                turnosHTML += '</tbody></table></div></div>';
+            }
 
             // Insertar todo en el div de resultados
             document.getElementById('resultados').innerHTML = contentHTML + tableHTML + turnosHTML;
