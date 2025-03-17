@@ -37,7 +37,7 @@ function obtenerDatos() {
 
             tableHTML += '</tbody></table></div></div>';
 
-            // Tabla de turnos con vacantes restantes (solo si se selecciona una sede específica)
+            // Tabla de turnos con vacantes restantes (solo si se selecciona una sede específica).
             let turnosHTML = '';
             if (sede) {
                 turnosHTML = '<div class="card"><div class="card-body"><h3>Turnos</h3><table class="table table-bordered"><thead><tr><th>Área</th><th>Turno</th><th>Total Inscritos</th><th>Vacantes Restantes</th></tr></thead><tbody>';
