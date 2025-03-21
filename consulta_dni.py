@@ -41,18 +41,18 @@ vacantes_disponibles = {
     ('Puno', 'Sociales', 'Mañana'): 515,
     ('Puno', 'Sociales', 'Tarde'): 515,
     ('Puno', 'Sociales', 'Noche'): 180,
-    ('Juli - Chucuito', 'Biomédicas', 'Tarde'): 40,
-    ('Juli - Chucuito', 'Ingenierías', 'Tarde'): 59,
-    ('Juli - Chucuito', 'Sociales', 'Tarde'): 51,
+    ('Juli-Chucuito', 'Biomédicas', 'Tarde'): 40,
+    ('Juli-Chucuito', 'Ingenierías', 'Tarde'): 59,
+    ('Juli-Chucuito', 'Sociales', 'Tarde'): 51,
     ('Ayaviri', 'Biomédicas', 'Tarde'): 55,
     ('Ayaviri', 'Ingenierías', 'Tarde'): 55,
     ('Ayaviri', 'Sociales', 'Tarde'): 96,
-    ('Azangaro', 'Biomédicas', 'Tarde'): 50,
-    ('Azangaro', 'Ingenierías', 'Tarde'): 60,
-    ('Azangaro', 'Sociales', 'Tarde'): 110,
-    ('Huancané - Moho', 'Biomédicas', 'Tarde'): 55,
-    ('Huancané - Moho', 'Ingenierías', 'Tarde'): 55,
-    ('Huancané - Moho', 'Sociales', 'Tarde'): 55,
+    ('Azángaro', 'Biomédicas', 'Tarde'): 50,
+    ('Azángaro', 'Ingenierías', 'Tarde'): 60,
+    ('Azángaro', 'Sociales', 'Tarde'): 110,
+    ('Huancané-Moho', 'Biomédicas', 'Tarde'): 55,
+    ('Huancané-Moho', 'Ingenierías', 'Tarde'): 55,
+    ('Huancané-Moho', 'Sociales', 'Tarde'): 55,
     ('Ilave', 'Biomédicas', 'Mañana'): 45,
     ('Ilave', 'Ingenierías', 'Mañana'): 45,
     ('Ilave', 'Sociales', 'Mañana'): 56
@@ -153,6 +153,7 @@ def obtener_datos_endpoint():
                         clave = (sede_nombre, area_nombre, turno_nombre)
                         if clave in vacantes_disponibles:
                             conteo_turnos[area_nombre][turno_nombre] = 0  # Inicializar con 0
+                            vacantes_restantes[area_nombre][turno_nombre] = vacantes_disponibles[clave]
 
             # Contar inscritos reales
             for registro in datos_filtrados:
